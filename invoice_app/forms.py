@@ -1,5 +1,5 @@
 from django import forms
-from .models import Invoice
+from .models import Invoice, services
 
 class InvoiceForm(forms.ModelForm):
 	class Meta:
@@ -44,6 +44,12 @@ class InvoiceUpdateForm(forms.ModelForm):
 				'line_five', 'line_five_quantity', 'line_five_unit_price', 'line_five_total_price', 
 				'total', 'paid', 'invoice_type'
 				]
+
+
+class services_form(forms.ModelForm):
+	class Meta:
+		model = services
+		fields = ['service_name']
 
 
 

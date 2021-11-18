@@ -47,3 +47,12 @@ class Invoice(models.Model):
 
 	def __str__(self):
 		return self.name + ' - ' + str(self.invoice_number)
+
+
+
+class services(models.Model):
+	auto_increment_id = models.AutoField(primary_key=True)
+	service_name = models.CharField('Service name', max_length=120, default='', blank=True, null=True)
+	def __str__(self):
+		return self.service_name
+

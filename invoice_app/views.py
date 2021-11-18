@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import InvoiceForm,InvoiceSearchForm,InvoiceUpdateForm
+from .forms import InvoiceForm,InvoiceSearchForm,InvoiceUpdateForm,services_form
 from .models import *
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -71,3 +71,19 @@ def delete_invoice(request, pk):
 		queryset.delete()
 		return redirect('/list_invoice')
 	return render(request, 'delete_invoice.html')
+
+
+def services(request):
+	form = services_form(request.POST or None)
+	if form.is_valid():
+		form.save()
+		messages.success(request, 'Successfully Saved')
+		return redirect('/add_services')
+	context = {
+		"form": form,
+		"title": "Services details",
+	}
+	return render(request, "buttons.html",context)
+
+def services_search(request):
+	return render(request, "cards.html")
